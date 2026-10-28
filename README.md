@@ -1,6 +1,6 @@
 # E-commerce Project (full stack)
 
-A dark, futuristic storefront with a real backend.
+A simple, futuristic storefront with a real backend.
 
 - **Frontend:** **React 18** (Vite, React Router) + **Tailwind CSS** + **Axios**, lazy-loaded images, skeleton loaders, slow scroll-reveal and page transitions
 - **Backend:** Node.js + Express 5, **Prisma** + PostgreSQL, **bcrypt** password hashing, JWT auth, **CORS**, Helmet, rate limiting
@@ -9,7 +9,7 @@ A dark, futuristic storefront with a real backend.
 ## Run it (Docker)
 
 ```bash
-cp .env.example .env     # optional, but change JWT_SECRET and POSTGRES_PASSWORD for anything public
+cp .env.example .env    
 docker compose up --build
 ```
 
