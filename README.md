@@ -64,21 +64,8 @@ In dev, Vite forwards `/api` calls to the API on port 3000 (see `frontend/vite.c
 
 Send the token as `Authorization: Bearer <token>`.
 
-## What changed from the original
-
-- Replaced the Sequelize + SQLite/JSON setup with Prisma + PostgreSQL (`backend/prisma/schema.prisma`).
-- Added accounts: bcrypt-hashed passwords, JWT sessions. Carts and orders now belong to the signed-in user (they used to be one shared global cart).
-- Removed the public `/api/reset` endpoint (anyone could wipe the data).
-- The frontend is now a React + Tailwind single-page app (pages: shop, checkout, orders, package tracking, sign-in/register) with category filter chips.
-- Product photos were compressed from 14 MB to 1.7 MB (same file names, now in `frontend/public/images`).
 
 ## Notes
 
-- `frontend/public/images/logo*.png` is still the original course logo. Swap in your own.
 - Payments are not integrated: "Place your order" records the order only.
 
-## Troubleshooting
-
-- **`apt-get` / `npm install` / "Temporary failure resolving" during `docker compose up --build`:** Docker lost its internet connection while building. Just run the command again (finished steps are cached). If it keeps happening, in Docker Desktop open Settings > Docker Engine and add `"dns": ["8.8.8.8", "1.1.1.1"]` to the JSON, then Apply & restart.
-
-- **"ports are not available ... 5433" (or 8080 / 3000):** another program is using that port. Stop it, or change the left-hand number of that port mapping in `docker-compose.yml`.
