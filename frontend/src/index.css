@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply min-h-screen bg-paper font-body text-fg antialiased; }
+  h1, h2, h3 { @apply font-display tracking-tight; }
+  select option { background: #ffffff; color: #262b23; }
+  ::selection { background: #99f7ab; color: #262b23; }
+  :focus-visible { outline: 2px solid #60695c; outline-offset: 3px; }
+}
+
+@layer components {
+  .card { @apply rounded-2xl border border-moss/25 bg-white/60; }
+
+  /* marker-style highlight behind a word in a heading */
+  .hl { @apply rounded-xl bg-mint px-2.5 box-decoration-clone; }
+
+  .btn {
+    @apply inline-flex h-[42px] items-center justify-center gap-2 rounded-full border border-moss/30 bg-white/60 px-5 font-semibold text-fg no-underline transition-all duration-500 ease-expo-out hover:-translate-y-0.5 hover:bg-white active:translate-y-0 active:scale-[0.98] disabled:cursor-progress disabled:opacity-60 disabled:hover:translate-y-0;
+  }
+  .btn-primary {
+    @apply inline-flex h-[42px] items-center justify-center gap-2 rounded-full border border-moss/40 bg-mint px-5 font-semibold text-ink no-underline transition-all duration-500 ease-expo-out hover:-translate-y-0.5 hover:brightness-95 active:translate-y-0 active:scale-[0.98] disabled:cursor-progress disabled:opacity-60 disabled:hover:translate-y-0;
+  }
+  .btn-added { @apply !border-moss !bg-moss !text-paper; }
+
+  .field {
+    @apply h-[42px] rounded-xl border border-moss/30 bg-white/70 px-3 text-fg transition-all duration-500 ease-expo-out placeholder:text-moss/70 focus:border-moss focus:outline-none focus:ring-4 focus:ring-mint;
+  }
+  .link-btn {
+    @apply cursor-pointer border-0 bg-transparent p-0 font-medium text-fg underline decoration-moss/40 underline-offset-4 transition-colors duration-500 hover:decoration-moss;
+  }
+
+  .chip {
+    @apply cursor-pointer rounded-full border border-moss/30 bg-white/50 px-4 py-2 capitalize text-moss transition-all duration-500 ease-expo-out hover:-translate-y-0.5 hover:border-moss hover:text-ink;
+  }
+  .chip-active { @apply !border-moss bg-mint font-semibold !text-ink; }
+
+  .stars {
+    --p: 100%;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #60695c var(--p), rgba(96, 105, 92, 0.25) var(--p));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* loading shimmer */
+  .shimmer { position: relative; overflow: hidden; }
+  .shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    animation: shimmer 1.8s infinite;
+  }
+
+  .clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+}
